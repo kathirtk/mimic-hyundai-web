@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hyundai</title>
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfOaiKphqCaCtCu_1Og0HYcU2MZx6KeevLBA&usqp=CAU">
+
+    <!--csslink-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <style>
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        body {
+            background-color: #48dbfb;
+            background-image: linear-gradient(315deg, #48dbfb 0%, #d3d3d3 74%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 30%;
+            left: 15px;
+            right: 0;
+            height: 80%;
+            width: 69%;
+            opacity: 0;
+            transition: .1s ease;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcEAAAHBCAYAAAARuwDoAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTNGMjcxMERBNzVGMTFFOEJGNDZCMEYyNjc4OUZCNTIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTNGMjcxMEVBNzVGMTFFOEJGNDZCMEYyNjc4OUZCNTIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxM0YyNzEwQkE3NUYxMUU4QkY0NkIwRjI2Nzg5RkI1MiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxM0YyNzEwQ0E3NUYxMUU4QkY0NkIwRjI2Nzg5RkI1MiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pn2zMRsAAAVnSURBVHja7NUxAQAwCMAwQM88zT06UMFFIqFPM97vAICDSgIATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwTABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAHABAEwQQkAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwTABCUAwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAATBAAE5QAABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEAMEEATFACAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQAEwQABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEABMEwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBwAQBMEEJADBBADBBADBBADBBADBBADBBADBBADBBADBBADBBADBBADBBADBBADBBADBBADBBADBBAFg2AgwAfR0E8927o5sAAAAASUVORK5CYII=");
+        }
+        
+        .container:hover .overlay {
+            opacity: 1;
+        }
+        
+        .text {
+            color: white;
+            font-size: 10px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--navstart-->
+    <nav class="navbar mt-lg-0">
+
+        <a class="navbar-brand mb-lg-1" href="#">
+            <img src="https://www.pngarts.com/files/3/Hyundai-Logo-PNG-Image-Background.png" alt="logo" width="70" height="60" class="d-inline-block align-top">
+        </a>
+        <ul class="nav  ">
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#">Find a car</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Buy a car</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Connect to service</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" aria-disabled="true">Click to buy</a>
+            </li>
+        </ul>
+        <div class="justify-content-around">
+            <a href="#">
+                <span class="glyphicon glyphicon-user m-lg-3"></span>
+            </a>
+            <a href="#">
+                <span class="glyphicon glyphicon-map-marker m-lg-3"></span>
+            </a>
+            <a href="#">
+                <span class="glyphicon glyphicon-send m-lg-3"></span>
+            </a>
+            <a href="#">
+                <span class="glyphicon glyphicon-search m-lg-3"></span>
+            </a>
+        </div>
+
+    </nav>
+    <!--nav end-->
+
+    <!--img sliders start-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/Alcazar/Homepage-alcazar-new-pc.jpg" alt="First slide">
+                <div class="carousel-caption">
+                    <h1 class="h1 ">India's no.1 SUV makers.</h1>
+                    <button type="button" class="btn btn-primary">Know More</button>
+                    <button type="button" class="btn btn-primary">Test Drive</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/build-a-car/special-offers/march/i20_ICOTY_Red%20car_Website_Home%20page_PC.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/Hyundai-HomePage-Mob-PC.jpg" alt="Third slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!--img sliders end-->
+
+    <!--heading-->
+    <h1 class="display-1 my-5 text-xl-center">Models</h1>
+
+    <!--img sliders2 start-->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SUV</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sedan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hatchback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Electric</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_verna.png" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_i20.png" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_elantra.png" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_venue.png" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_creta.png" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_tucson.png" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/Proposed-homepage/1600x590_thumbnil_1.png" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_kona.png" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_aura.png" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_nios.png" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/1600x590_santro.png" alt="Third slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--img sliders2 end-->
+
+    <!--4buttons-->
+    <div class="bg-light text-center p-4 m-2 mb-0 block">
+        <button class="btn btn-secondary" type="button">Request a Test Drive</button>
+        <button class="btn btn-secondary" type="button">Download E-Brochure</button>
+        <button class="btn btn-secondary" type="button">Click To Buy</button>
+        <button class="btn btn-secondary" type="button">Prices</button>
+    </div>
+
+    <!--heading2-->
+    <div class=" p-3 text-white" style="background-color: #205E9B;">
+        <h2>WHAT'S NEW</h2>
+        <h3>See what's happening</h3>
+    </div>
+
+    <!--cards start-->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col">
+                <div class="card ">
+                    <img class="card-img-top w-100 " src="https://www.hyundai.com/content/dam/hyundai/in/en/data/Instagram/Ishaan%20Khatter_352x400.jpg" alt="Card image cap" height="">
+                    <div class="card-body">
+                        <h5 class="card-title"><span style="color: blue;">BRAND</span></h5>
+                        <p class="card-text">
+                            I am i20,I am Born Magnetic</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/Proposed-homepage/Img_352x400.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><span style="color: blue;">INNOVATION</span></h5>
+                        <p class="card-text">
+                            Power of Digital: Creating Seamless experience!</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/hyundai-story/suv-supremecy.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><span style="color: blue;">BRAND</span></h5>
+                        <p class="card-text">
+                            The Dominators that are born to rule</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <!--cards end-->
+
+    <!--img sliders3 start-->
+    <div class="container-fluid">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class=" w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/images/home/pc/1860x540-firstbanner.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class=" w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/images/home/New-prices-pc.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class=" w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/images/home/pc/1860x540-watsapp.jpg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class=" w-100" src="https://www.hyundai.com/content/dam/hyundai/in/en/images/home/pc/HyARPC.jpg" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+    <!--img sliders3 end-->
+
+    <!--heading3-->
+    <div class=" p-3 my-4 text-white" style="background-color: #205E9B;">
+        <h4>SOCIAL</h4>
+        <h3>Check out what's trending</h3>
+    </div>
+
+    <!--card img start-->
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col-lg-4">
+                <img class="w-75" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/Instagram/Alcazar_1000x1000.jpg">
+                <div class="overlay">
+                    <div class="text">#HyundaiALCAZAR <br>The upcoming 7 seater premium SUV, Hyundai ALCAZAR</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <img class="w-75" src="https://www.hyundai.com/content/dam/hyundai/in/en/2.jpg">
+                <div class="overlay">
+                    <div class="text">#InternationalDayofHappiness <br>In the pursuit for happiness<br> #HappinessInHyundai
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <img class="w-75" src="https://www.hyundai.com/content/dam/hyundai/in/en/3.jpg">
+                <div class="overlay">
+                    <div class="text">#HappyWomensDay2021 <br>This International Women's Day, let's pull the <br>#BrakeOnStereotypes
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="w-75" src="https://www.hyundai.com/content/dam/hyundai/in/en/4.jpg">
+                <div class="overlay">
+                    <div class="text">#HyundaiMoment <br> It's in the stillness that you can take in the beauty around you
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <img class="w-75" src="https://www.hyundai.com/content/dam/hyundai/in/en/5.jpg">
+                <div class="overlay">
+                    <div class="text">#QualityTime <br> A day spent with our loved ones is a day spent well
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <img class="w-75" src="https://www.hyundai.com/content/dam/hyundai/in/en/6.jpg">
+                <div class="overlay">
+                    <div class="text">#BornMagnetic <br> The eye-catching and iconic<br> #Allnewi20 gels perfectly with Guru Randhawa
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--card img end-->
+
+
+    <!-- text sliders start-->
+    <div class="card my-3" style="height:250px">
+        <div class="card-body">
+            <h1 class="card-title text-center">News</h1>
+            <!--textslide-->
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item mt-lg-2 text-center active">
+                        <small>India News|2021.04.08</small>
+                        <h3 class="h3 ">HMIL Showcases the Epitome of Manufacturing Magnificence - Hyundai ALCAZAR</h3>
+                        <button type="button" class="btn btn-primary">Learn More</button>
+
+                    </div>
+                    <div class="carousel-item mt-lg-2 text-center">
+                        <small>India News|2021.04.05</small>
+                        <h3 class="h3 ">Hyundai Records Landmark Achievement of over 1 Million ‘Made in India’ SUVs</h3>
+                        <button type="button" class="btn btn-primary">Learn More</button>
+
+                    </div>
+                    <div class="carousel-item mt-lg-2 text-center">
+                        <small>India News|2021.04.02</small>
+                        <h3 class="h3 ">HMIL Culminates Hyundai ALCAZAR Testing in Diverse Conditions</h3>
+                        <button type="button" class="btn btn-primary">Learn More</button>
+
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <!-- text sliders end-->
+
+    <!--heading4-->
+    <div class="bg-light p-3  my-2 text-dark text-center">
+        <h1 class="display-1 my-2 p-3 font-weight-bold">Find a Dealer & Website</h1>
+        <h4 class="h4">Locate your nearest dealership and visit website.</h4>
+    </div>
+
+    <!--search box start-->
+    <div class="div bg-secondary my-lg-3 text-center" style="height: 150px;">
+        <div class="row p-5">
+            <div class="col">
+                <select id="inputState" class="form-control">
+                   <option selected>Select Dealership</option>
+                  <option>Sales Showroom</option>
+                  <option>Service Workshop</option>
+                  <option>Used Car</option>
+                </select>
+            </div>
+            <div class="col">
+                <select id="inputState" class="form-control">
+                   <option selected>Select a Model</option>
+                </select>
+            </div>
+            <div class="col">
+                <select id="inputState" class="form-control">
+                   <option selected>Select s State</option>
+                </select>
+            </div>
+            <div class="col">
+                <select id="inputState" class="form-control">
+                   <option selected>Select a City</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary ">Search</button>
+    </div>
+    <!--search box end-->
+
+    <!--collage images start-->
+    <div class="row p-0 m-0 ">
+        <div class="col-6 ">
+            <img src="https://www.hyundai.com/content/dam/hyundai/in/en/images/home/pc/Hyundai_home_page_bottom_CTA_PC_960x312_1_Book-a-car.jpg">
+        </div>
+        <div class="col-6">
+            <img src="https://www.hyundai.com/content/dam/hyundai/in/en/images/home/pc/Hyundai_home_page_bottom_CTA_PC_960x312_2_Book-a-service.jpg">
+
+        </div>
+    </div>
+
+    <div class="row p-0 m-0">
+        <div class="col-6 ">
+            <img src="https://www.hyundai.com/content/dam/hyundai/in/en/images/home/mob/Hyundai_home_page_bottom_CTA_Mob_320x104_3_H-promise-used-car.jpg" style="width:650px;height: 300px;">
+        </div>
+        <div class="col-6 ">
+            <img src="https://www.hyundai.com/content/dam/hyundai/in/en/images/home/mob/Hyundai_home_page_bottom_CTA_Mob_320x104_4_special-offer-promotion.jpg" style="width:650px;height: 300px;">
+        </div>
+    </div>
+    <!--collage images end-->
+
+
+    <!-- Footer -->
+    <footer class="page-footer font-small bg-dark text-white">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2021 Copyright:
+            <a href="#"> TKkathir.com</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+    <!--querylink-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
